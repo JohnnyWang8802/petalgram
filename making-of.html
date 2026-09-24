@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Making Petalgram — one photograph, re-set as living ink</title>
+<meta name="description" content="How a single still photograph became a flower that never holds still: polar warping, an 18-second choreography, three halftone plates, and a frame-exact video export.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Making Petalgram">
+<meta property="og:description" content="One photograph, re-set as living ink. Polar warp, halftone plates, frame-exact export.">
+<meta property="og:image" content="assets/still-16x9.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="assets/still-16x9.jpg">
+<meta name="theme-color" content="#f4f6f9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f4f6f9'/%3E%3Cg fill='%230b2a78'%3E%3Ccircle cx='16' cy='9' r='5'/%3E%3Ccircle cx='23' cy='16' r='5'/%3E%3Ccircle cx='16' cy='23' r='5'/%3E%3Ccircle cx='9' cy='16' r='5'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f4f6f9;--ink:#0d1a3a;--soft:#5b6680;--mute:#97a0b3;--rule:rgba(13,26,58,.14);--blue:#0b2a78;
+    --serif:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
+    --sans:"Inter",ui-sans-serif,system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+    --g:clamp(18px,4vw,56px);--measure:640px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--paper)}
+  body{color:var(--ink);font:400 17px/1.7 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}
+  .mono{font:500 11px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;font-feature-settings:"tnum","zero"}
+
+  header.top{display:flex;justify-content:space-between;align-items:baseline;gap:20px;
+    padding:var(--g) var(--g) 16px;border-bottom:1px solid var(--rule);margin:0 var(--g);padding-left:0;padding-right:0}
+  .mark{font:italic 400 30px/1 var(--serif);text-decoration:none}
+  .mark sup{font:500 9px/1 var(--mono);letter-spacing:.08em;vertical-align:.7em;margin-left:5px;color:var(--soft);font-style:normal}
+  .back{color:var(--soft);text-decoration:none}
+  .back:hover{color:var(--ink)}
+
+  .hero{padding:clamp(56px,10vw,140px) var(--g) clamp(40px,6vw,80px);max-width:1200px;margin:0 auto}
+  .eyebrow{display:flex;gap:14px;align-items:center;color:var(--soft);margin-bottom:28px}
+  .eyebrow:after{content:"";flex:0 0 40px;height:1px;background:var(--rule)}
+  h1{font:300 clamp(48px,8vw,120px)/.94 var(--serif);letter-spacing:-.02em;margin-left:-.055em}
+  h1 em{font-style:italic}
+  .deck{margin-top:32px;max-width:36ch;font-size:19px;line-height:1.55;color:var(--soft);text-wrap:pretty}
+
+  figure{margin:0 auto;max-width:1200px;padding:0 var(--g)}
+  figure img{display:block;width:100%;height:auto;background:#e9edf3}
+  figcaption{display:flex;gap:16px;margin-top:12px;color:var(--mute)}
+  figcaption b{color:var(--ink);font-weight:500}
+
+  article{max-width:calc(var(--measure) + 2*var(--g));margin:0 auto;padding:clamp(56px,8vw,104px) var(--g) 0}
+  section{margin-bottom:clamp(56px,8vw,96px)}
+  h2{display:grid;grid-template-columns:3.2em 1fr;align-items:baseline;margin-bottom:22px;
+    font:400 clamp(30px,3.6vw,42px)/1.1 var(--serif);letter-spacing:-.01em}
+  h2 .n{font:500 11px/1 var(--mono);letter-spacing:.08em;color:var(--mute)}
+  p{margin-bottom:1.05em;text-wrap:pretty;hanging-punctuation:first}
+  p.lead{font-size:19px}
+  em{font-style:italic}
+  strong{font-weight:500}
+  code{font:400 .86em/1 var(--mono);background:rgba(13,26,58,.06);padding:.12em .36em;border-radius:3px}
+  ul.moves{list-style:none;margin:6px 0 22px;border-top:1px solid var(--rule)}
+  ul.moves li{display:grid;grid-template-columns:8.5em 1fr;gap:16px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:16px}
+  ul.moves li span{font:500 11px/1.9 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+  .wide{margin:36px calc(-1*var(--g)) 40px}
+  .wide figure{padding:0}
+  .pull{margin:40px 0;padding:26px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+    font:italic 300 clamp(26px,3vw,34px)/1.3 var(--serif);color:var(--blue)}
+  dl.spec{display:grid;grid-template-columns:auto 1fr;border-top:1px solid var(--rule);margin:8px 0 24px}
+  dl.spec dt,dl.spec dd{padding:10px 0;border-bottom:1px solid var(--rule)}
+  dl.spec dt{color:var(--mute);padding-right:24px}
+  dl.spec dd{text-align:right;font-size:15px;font-feature-settings:"tnum"}
+  .cut{color:var(--soft)}
+  .cut h3{font:500 11px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin:22px 0 6px}
+
+  footer{max-width:calc(var(--measure) + 2*var(--g));margin:0 auto;padding:40px var(--g) var(--g)}
+  footer .row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:18px;border-top:1px solid var(--rule);color:var(--mute)}
+  .cta{display:inline-flex;gap:10px;align-items:baseline;margin-bottom:40px;font:italic 400 clamp(28px,3.4vw,40px)/1 var(--serif);text-decoration:none}
+  .cta:hover{color:var(--blue)}
+  .cta .mono{font-style:normal}
+  @media (max-width:640px){ul.moves li,dl.spec{grid-template-columns:1fr}ul.moves li{gap:2px}dl.spec dd{text-align:left;padding-top:0}
+    h2{grid-template-columns:1fr}h2 .n{margin-bottom:8px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="mark" href="./">Petalgram<sup>№ 01</sup></a>
+  <a class="back mono" href="./">View the piece →</a>
+</header>
+
+<div class="hero">
+  <div class="eyebrow mono">Making of</div>
+  <h1>One photograph,<br><em>re-set as living ink.</em></h1>
+  <p class="deck">There is no video in Petalgram and no 3D model. A single still image is warped, choreographed and printed again sixty times a second.</p>
+</div>
+
+<figure>
+  <img src="assets/still-16x9.jpg" width="1920" height="1080" alt="A four-petalled flower printed in blue halftone dots on pale paper, with the title Four petals, forty thousand dots.">
+  <figcaption class="mono"><b>Fig. 01</b> End card of the 16:9 reel</figcaption>
+</figure>
+
+<article>
+  <section>
+    <h2><span class="n">01</span>A still, taught to move</h2>
+    <p class="lead">Every pixel on screen asks one question: <em>which point of the original photograph belongs here?</em> Answering that in polar coordinates, around the flower’s heart, turns a flat image into something that can bend.</p>
+    <p>Each of the four petals owns a sector of the photograph. Inside its sector the mapping is rotated, compressed and stretched, so the petal can move while its texture, the fine veins and the translucent edges of the original, comes along untouched. Each petal makes four moves at once:</p>
+    <ul class="moves">
+      <li><span>Swing</span>The sector rotates about the heart.</li>
+      <li><span>Turn</span>The sector narrows at mid-swing, so the petal reads as edge-on, the way a leaf turns in water.</li>
+      <li><span>Bend</span>The swing reaches the tip later than the base, curling every petal into an S.</li>
+      <li><span>Lag</span>The flower head travels a small closed arc; the petals, having mass, are dragged a beat behind it.</li>
+    </ul>
+    <p>Depth is inferred rather than measured. Each petal tips toward or away from the viewer as it swings, petals in front cast a soft shadow on those behind, and the throat is darkened where the petals meet.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">02</span>Eighteen seconds</h2>
+    <p>The motion is choreographed, not random. A single wave travels around the flower every six seconds, each petal a quarter-beat behind the last, and all four breathe open and closed on a nine-second cycle. Across the loop an envelope shapes the whole: <em>gather, rest, one full flourish, settle.</em> The tempo itself bends with it, faster in the flourish and slower at rest.</p>
+    <div class="pull">Every term is periodic in eighteen seconds, so the piece does not merely repeat: it closes exactly.</div>
+    <p>That was checked, not assumed. The ink field at second 0 and at second 18 was compared cell by cell across 132,000 cells: the largest difference is one step in 255, which is rounding.</p>
+  </section>
+
+  <div class="wide">
+    <figure>
+      <img src="assets/reel-beats.jpg" width="2232" height="440" alt="Five frames: the original photograph; the same flower as coarse dots; a close-up of fine halftone; the flower as type; the flower in dots again." loading="lazy">
+      <figcaption class="mono"><b>Fig. 02</b> The reel, in five beats: photograph · coarse screen · push-in · type · print</figcaption>
+    </figure>
+  </div>
+
+  <section>
+    <h2><span class="n">03</span>Printing it</h2>
+    <p>The warped flower is first computed as an <em>ink field</em>, a small grid of how much ink each cell should carry. The grid remembers its last few frames and lets them fade, which leaves a faint afterimage wherever a petal has just passed, like a long exposure.</p>
+    <p>That field is then printed the way a press would print it: as three plates, each with its own screen angle, at 15°, 45° and 75°. Dot size follows the ink continuously (amplitude modulation), and where the plates overlap they form the rosettes you see in any magazine. Each plate sits a hair out of register, and the paper carries fibre grain and a slow mottle.</p>
+    <p>In ASCII mode the dots become characters. The glyphs are not ranked by hand: at load time each one is drawn and its actual pixel coverage measured, so the ramp from <code>·</code> to <code>@</code> is honest in whatever typeface the browser has. Switching modes morphs between them: type appears first in the densest ink and spreads outward.</p>
+  </section>
+
+  <div class="wide">
+    <figure>
+      <img src="assets/halftone-detail.jpg" width="900" height="600" alt="Close-up of the flower's heart, showing overlapping rotated halftone dot screens." loading="lazy">
+      <figcaption class="mono"><b>Fig. 03</b> At 3× the screens resolve into rosettes</figcaption>
+    </figure>
+  </div>
+
+  <section>
+    <h2><span class="n">04</span>Frame-exact export</h2>
+    <p>Screen recording drops frames and depends on how busy the machine is. The first version recorded the canvas in real time, and a hidden browser tab was enough to stretch a nine-second film to twenty-four.</p>
+    <p>The export now renders every frame from a frame counter rather than a clock, encodes it with WebCodecs at an exact timestamp, and writes the MP4 container by hand, index first so it streams. A slow machine or a background tab changes how long the export takes, never what the film contains.</p>
+    <dl class="spec mono">
+      <dt>Frames</dt><dd>16:9 · 4:5 · 1:1</dd>
+      <dt>Takes</dt><dd>18 s loop · 9.4 s reel</dd>
+      <dt>Codec</dt><dd>H.264 High, 60 fps, 24 Mb/s</dd>
+      <dt>Verified</dt><dd>1080 frames, 18.000 s, zero decode errors</dd>
+    </dl>
+  </section>
+
+  <section class="cut">
+    <h2><span class="n">05</span>What was cut</h2>
+    <p>Part of making it was deciding what to leave out.</p>
+    <h3>A continuous sheet</h3>
+    <p>Blending the four petal deformations into one smooth warp, the way a mesh is skinned to bones, removed the seams between sectors. It also smeared the heart into a dark knot. The seams turned out to be true to the photograph, where the petals really do meet at a point, and they stayed.</p>
+    <h3>Type that pushes ink away</h3>
+    <p>A soft clearance around the headline kept the dots off the letters. It read as a mask, a visible edge cutting a petal, and was removed: the flower is allowed to pass under the words.</p>
+    <h3>Generative sound</h3>
+    <p>A drone tuned to the breath, a bell each time a petal turned. It was built, measured and then taken out. The piece is quieter without it.</p>
+  </section>
+</article>
+
+<footer>
+  <a class="cta" href="./">See it move <span class="mono">→</span></a>
+  <div class="row mono"><span>Petalgram № 01 · MMXXVI</span><span>One HTML file · WebGL2 · no libraries</span></div>
+</footer>
+</body>
+</html>
