@@ -4,6 +4,33 @@ One photograph, re-set as living ink. A single still image of a four-petalled fl
 
 No video, no 3D model, no libraries: one HTML file, WebGL2, and `flower.webp`.
 
+![A four-petalled flower printed in blue halftone dots, swinging and curling on a seamless loop](docs/hero.gif)
+
+## Highlights
+
+<table>
+<tr>
+<td width="50%"><img src="docs/photo-to-print.gif" alt="The source photograph breaks into coarse dots, which resolve into a fine four-tone print"></td>
+<td width="50%"><img src="docs/push-in.gif" alt="The camera pushes into the flower's heart, revealing overlapping halftone screens"></td>
+</tr>
+<tr>
+<td><b>One photograph → a four-tone print.</b> The only input is a still image. Every frame is warped from it and printed again.</td>
+<td><b>Three screens at 15°, 45° and 75°.</b> Dots grow with the ink, and where the plates overlap they form real rosettes.</td>
+</tr>
+<tr>
+<td><img src="docs/modes.gif" alt="The flower morphs from halftone dots into blended type and then into ASCII characters"></td>
+<td><img src="docs/loupe-and-wind.gif" alt="A circular loupe follows the cursor across the flower, then a gust whips the petals"></td>
+</tr>
+<tr>
+<td><b>Dither → Blend → ASCII.</b> Modes morph rather than cut: type appears first in the densest ink and spreads outward.</td>
+<td><b>The cursor is a loupe; holding it raises wind.</b> Each petal swings, turns edge-on and curls from base to tip.</td>
+</tr>
+<tr>
+<td><img src="docs/inks.gif" alt="The same flower in four palettes: porcelain blue, iris violet, ember red and night"></td>
+<td valign="top"><b>Four inks.</b> Porcelain, Iris, Ember and Night.<br><br><b>An exact 18-second loop.</b> Every motion term is periodic in 18 s, so the piece closes seamlessly (the loop above plays at 2×).<br><br><b>Frame-exact export.</b> MP4 at 60 fps in 16:9, 4:5 or 1:1, encoded with WebCodecs at exact timestamps.</td>
+</tr>
+</table>
+
 - `index.html`: the piece
 - `making-of.html`: the case study
 
@@ -64,6 +91,7 @@ making-of.html   case study
 flower.webp      the source photograph (2000×1394)
 poster.png       social card, 1200×630
 assets/          stills used by the case study
+docs/            the GIFs in this README
 _headers         cache and security headers for Cloudflare Pages
 deploy.sh        build + deploy
 archive/         earlier versions, v0 to v7
